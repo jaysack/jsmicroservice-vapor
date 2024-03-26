@@ -32,6 +32,8 @@ public extension Migration {
         switch type {
         case .varchar(let length):
             return .custom("VARCHAR(\(length))[]")
+        case .enum(let `enum`):
+            return .custom("\(`enum`)[]")
         }
     }
     
@@ -39,6 +41,7 @@ public extension Migration {
 
 public enum ColumnDataType {
     case varchar(Int)
+    case `enum`(String)
 }
 
 public enum DefaultDataTypeValue {
