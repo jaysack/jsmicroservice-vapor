@@ -16,10 +16,11 @@ public extension Creatable {
 
 // MARK: Read
 public protocol Readable {
-    static func read(from req: Request) async throws -> Page<Self>
+    associatedtype DTO: Content
+    static func read(from req: Request) async throws -> Page<DTO>
 }
 public extension Readable {
-    static func read(from req: Request) async throws -> Page<Self> {
+    static func read(from req: Request) async throws -> Page<DTO> {
         fatalError("\(#function) has not been implemented yet ❌")
     }
 }
